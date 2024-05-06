@@ -42,7 +42,7 @@ function reducer (state: TranslateState, action: Action) {
 export function useStore () {
   const [{fromLang, toLang, fromText, toText, loading}, dispatch] = useReducer(reducer, initialState)
   
-  const interchangeLang = () => dispatch({type: 'INTERCHANGE_LANG'})
+  const swapLang = () => dispatch({type: 'INTERCHANGE_LANG'})
   const changeToLang = (payload: Language) => dispatch({type: 'CHANGE_TO_LANG', payload})
   const changeFromLang = (payload: FromLang) => dispatch({type: 'CHANGE_FROM_LANG', payload})
   const changeFromText = (payload: string) => dispatch({type: 'CHANGE_FROM_TEXT', payload})
@@ -54,7 +54,7 @@ export function useStore () {
     fromText,
     toText,
     loading,
-    interchangeLang,
+    swapLang,
     changeFromLang,
     changeToLang,
     changeFromText,

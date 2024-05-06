@@ -7,7 +7,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { AUTO_LANGUAGE } from './constants'
 
 function App() {
-  const {fromLang, toLang, interchangeLang, changeFromLang} = useStore()
+  const {fromLang, toLang, swapLang, changeFromLang} = useStore()
 
   return (
     <Container fluid>
@@ -20,7 +20,7 @@ function App() {
         </Col>
 
         <Col>
-          <button disabled={fromLang === AUTO_LANGUAGE} onClick={interchangeLang}>Interchange</button>
+          <button disabled={fromLang === AUTO_LANGUAGE} onClick={swapLang}>Interchange</button>
         </Col>
         
         <Col>
