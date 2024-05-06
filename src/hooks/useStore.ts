@@ -1,7 +1,7 @@
 import { useReducer } from 'react'
-import { Action, type translateState } from '../types.d'
+import { Action, FromLang, Language, type TranslateState } from '../types.d'
 
-const initialState: translateState = {
+const initialState: TranslateState = {
   fromLang: 'auto',
   toLang: 'en',
   fromText: '',
@@ -9,7 +9,7 @@ const initialState: translateState = {
   loading: false,
 }
 
-function reducer (state: translateState, action: Action) {
+function reducer (state: TranslateState, action: Action) {
   const { type } = action
 
   if (type === 'INTERCHANGE_LANG') {
@@ -39,8 +39,8 @@ export function useStore () {
   const [{fromLang, toLang, fromText, toText, loading}, dispatch] = useReducer(reducer, initialState)
   
   const interchangeLang = () => dispatch({type: 'INTERCHANGE_LANG'})
-  const changeToLang = (payload: string) => dispatch({type: 'CHANGE_TO_LANG', payload})
-  const changeFromLang = (payload: string) => dispatch({type: 'CHANGE_FROM_LANG', payload})
+  const changeToLang = (payload: Language) => dispatch({type: 'CHANGE_TO_LANG', payload})
+  const changeFromLang = (payload: FromLang) => dispatch({type: 'CHANGE_FROM_LANG', payload})
   const changeFromText = (payload: string) => dispatch({type: 'CHANGE_FROM_TEXT', payload})
   const changeToText = (payload: string) => dispatch({type: 'CHANGE_TO_TEXT', payload})
 

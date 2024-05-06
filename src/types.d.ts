@@ -1,4 +1,9 @@
-export interface translateState {
+import {AUTO_LANGUAGE, SUPPORTED_LANGUAGES} from './constants'
+
+export type Language = keyof typeof SUPPORTED_LANGUAGES
+export type AutoLanguage = keyof typeof AUTO_LANGUAGE
+export type FromLang = Language | AutoLanguage
+export interface TranslateState {
   fromLang: string,
   toLang: string,
   fromText: string,
