@@ -3,15 +3,33 @@ import './App.css'
 
 import { useStore } from './hooks/useStore'
 
+import { Container, Row, Col } from 'react-bootstrap'
+import { AUTO_LANGUAGE } from './constants'
+
 function App() {
-  const {fromLang, changeFromLang} = useStore()
+  const {fromLang, toLang, interchangeLang, changeFromLang} = useStore()
 
   return (
-    <>
+    <Container fluid>
       <h1>Google Translate</h1>
-      <button onClick={() => changeFromLang('es')}>Change language</button>
-      {fromLang}
-    </>
+
+      <Row>
+        <Col>
+        <h2>From</h2>
+        {fromLang}
+        </Col>
+
+        <Col>
+          <button disabled={fromLang === AUTO_LANGUAGE} onClick={interchangeLang}>Interchange</button>
+        </Col>
+        
+        <Col>
+          <h2>To</h2>
+          {toLang}
+        </Col>
+      </Row>
+
+    </Container>
   )
 }
 
